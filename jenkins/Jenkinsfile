@@ -26,5 +26,16 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
+        stage('deploy') {
+            steps {
+                sshagent(['ec2-ssh']) {
+                    sh '''
+                    ssh -o StrictHostKeyChecking=no ec2-user@ec2-13-234-116-23.ap-south-1.compute.amazonaws.com ls
+                    '''
+                }
+                
+
+            }
+        }
     }
 }
