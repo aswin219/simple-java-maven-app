@@ -26,16 +26,5 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-        stage('deploy') {
-            steps {
-                sshagent(['ec2-ssh']) {
-                    sh '''
-                    ssh ec2-user@ec2-3-110-189-98.ap-south-1.compute.amazonaws.com ls
-                    '''
-                }
-                
-
-            }
-        }
     }
 }
